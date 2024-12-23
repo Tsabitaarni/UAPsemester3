@@ -64,7 +64,7 @@ class AdminDashboard extends JFrame {
 
         foodList = new ArrayList<>();
         tableModel = new DefaultTableModel(new Object[]{"ID", "Name", "Price", "Image"}, 0);
-        orderTableModel = new DefaultTableModel(new Object[]{"ID", "Name", "Quantity", "Price", "Total"}, 0);
+        orderTableModel = new DefaultTableModel(new Object[]{"Name", "Price", "Quantity", "Total"}, 0);
 
         JTable foodTable = new JTable(tableModel) {
             public Class<?> getColumnClass(int column) {
@@ -84,7 +84,7 @@ class AdminDashboard extends JFrame {
         JButton editButton = new JButton("Edit Food");
         JButton deleteButton = new JButton("Delete Food");
         JButton orderButton = new JButton("Place Order");
-        JButton calculateTotalButton = new JButton("Calculate Total");
+//        JButton calculateTotalButton = new JButton("Calculate Total");
 
         addButton.addActionListener(e -> openFoodForm(null));
 
@@ -124,20 +124,20 @@ class AdminDashboard extends JFrame {
             }
         });
 
-        calculateTotalButton.addActionListener(e -> {
-            double totalPrice = 0;
-            for (int i = 0; i < orderTableModel.getRowCount(); i++) {
-                totalPrice += (double) orderTableModel.getValueAt(i, 4);
-            }
-            JOptionPane.showMessageDialog(this, "Total Order Price: " + totalPrice, "Total", JOptionPane.INFORMATION_MESSAGE);
-        });
+//        calculateTotalButton.addActionListener(e -> {
+//            double totalPrice = 0;
+//            for (int i = 0; i < orderTableModel.getRowCount(); i++) {
+//                totalPrice += (double) orderTableModel.getValueAt(i, 4);
+//            }
+//            JOptionPane.showMessageDialog(this, "Total Order Price: " + totalPrice, "Total", JOptionPane.INFORMATION_MESSAGE);
+//        });
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(orderButton);
-        buttonPanel.add(calculateTotalButton);
+//        buttonPanel.add(calculateTotalButton);
 
         setLayout(new BorderLayout());
         add(foodTableScrollPane, BorderLayout.WEST);
